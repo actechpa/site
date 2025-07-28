@@ -1,0 +1,2 @@
+Pull antes de começar a trabalhar: Sempre que você for trabalhar no seu repositório local, puxe as últimas alterações do GitHub para evitar conflitos: git pull origin main. 
+Push após suas alterações: Depois de fazer suas alterações, adicione, comite e envie as alterações para o GitHub: git add ., git commit -m "Sua mensagem de commit", e git push origin main. 
