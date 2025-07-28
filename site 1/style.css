@@ -74,8 +74,47 @@ header .container {
 }
 .hero-content h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; line-height: 1.1; background: linear-gradient(90deg, var(--accent-cyan), var(--accent-pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; }
 .hero-content p { font-size: clamp(1rem, 2.5vw, 1.2rem); color: var(--text-secondary); max-width: 600px; margin: 0 auto 2rem auto; }
-.cta-button { display: inline-block; background: linear-gradient(90deg, var(--accent-cyan), var(--accent-pink)); color: var(--white); padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-.cta-button:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(0, 212, 255, 0.5); }
+
+/* MODIFICADO: Estilos para o container dos botões no Hero */
+.hero-buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap; /* Permite que os botões quebrem em telas menores */
+}
+.button-separator {
+    color: var(--text-secondary);
+    font-weight: 700;
+}
+.cta-button {
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    border: 2px solid transparent;
+}
+.cta-button.primary {
+    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-pink));
+    color: var(--white);
+}
+.cta-button.primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+}
+.cta-button.secondary {
+    background-color: transparent;
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+}
+.cta-button.secondary:hover {
+    background-color: var(--accent-cyan);
+    color: var(--bg-dark);
+    transform: scale(1.05);
+}
+
 
 /* --- Seções em Geral --- */
 section { padding: 100px 0; }
@@ -125,18 +164,8 @@ section { padding: 100px 0; }
 .contact-button.whatsapp:hover { background-color: #1EBE57; transform: scale(1.05); }
 .contact-button.instagram { background-color: transparent; color: var(--accent-pink); border: 2px solid var(--accent-pink); }
 .contact-button.instagram:hover { background-color: var(--accent-pink); color: var(--white); transform: scale(1.05); }
-
-/* NOVO: Estilo para o botão de agendamento */
-.contact-button.schedule {
-    background-color: var(--accent-cyan);
-    color: var(--bg-dark);
-}
-.contact-button.schedule:hover {
-    background-color: var(--white);
-    color: var(--bg-dark);
-    transform: scale(1.05);
-}
-
+.contact-button.schedule { background-color: var(--accent-cyan); color: var(--bg-dark); }
+.contact-button.schedule:hover { background-color: var(--white); color: var(--bg-dark); transform: scale(1.05); }
 
 /* --- Rodapé --- */
 footer { background-color: var(--bg-dark); text-align: center; padding: 2rem 0; border-top: 1px solid rgba(255, 255, 255, 0.1); color: var(--text-secondary); font-size: 0.9rem; }
@@ -149,6 +178,9 @@ footer { background-color: var(--bg-dark); text-align: center; padding: 2rem 0; 
     header .container { height: 90px; }
     .logo img { height: 80px; }
     #hero { padding-top: 90px; }
+    /* Adicionado para os botões do hero em telas menores */
+    .hero-buttons-container { flex-direction: column; }
+
     .nav-links { display: none; }
     .hero-content h1 { font-size: 2.5rem; }
     .contact-links { flex-direction: column; }
