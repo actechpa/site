@@ -32,10 +32,10 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 170px; /* MODIFICADO: Altura ajustada para a nova logo */
+    height: 170px;
 }
 .logo img {
-    height: 130px; /* MODIFICADO: Altura da logo alterada para 130px */
+    height: 130px;
 }
 .nav-links { list-style: none; display: flex; gap: 2rem; }
 .nav-links a { color: var(--text-primary); text-decoration: none; font-weight: 700; font-size: 1rem; padding: 5px 0; position: relative; transition: color 0.3s ease; }
@@ -51,7 +51,7 @@ header .container {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding-top: 170px; /* MODIFICADO: Ajustado para corresponder à nova altura do header */
+    padding-top: 170px;
     background-color: var(--bg-dark); 
     background-image: url('tecnologia.jpg');
     background-size: cover; 
@@ -82,6 +82,20 @@ section { padding: 100px 0; }
 .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 4rem; font-weight: 900; color: var(--white); }
 
 /* --- Grade de Serviços --- */
+.service-category-title {
+    font-size: 1.8rem;
+    color: var(--accent-cyan);
+    text-align: center;
+    margin-top: 3.5rem;
+    margin-bottom: 2rem;
+    border-top: 1px solid rgba(0, 212, 255, 0.2);
+    padding-top: 3rem;
+}
+#services .service-category-title:first-of-type {
+    margin-top: 0;
+    border-top: none;
+    padding-top: 0;
+}
 .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
 .service-card { background-color: var(--bg-medium); padding: 2.5rem 2rem; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.1); text-align: center; transition: transform 0.3s ease, border-color 0.3s ease; }
 .service-card:hover { transform: translateY(-10px); border-color: var(--accent-cyan); }
@@ -92,9 +106,10 @@ section { padding: 100px 0; }
 /* --- SEÇÃO DE CLIENTES (CARROSSEL) --- */
 #clients { background-color: var(--bg-medium); }
 .client-carousel { position: relative; width: 100%; overflow: hidden; -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent); mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent); }
-.carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
-.client-logo { flex-shrink: 0; width: calc(100% / 5); padding: 0 15px; }
-.client-logo img { width: 100%; height: auto; filter: grayscale(80%) opacity(0.7); transition: filter 0.3s ease; }
+.carousel-track { display: flex; transition: transform 0.5s ease-in-out; align-items: center; }
+.client-logo { flex-shrink: 0; width: calc(100% / 5); padding: 0 15px; height: 160px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
+.client-logo img { max-width: 100%; height: 70px; object-fit: contain; filter: grayscale(80%) opacity(0.7); transition: filter 0.3s ease; }
+.client-name { font-size: 13px; color: var(--text-secondary); font-weight: 400; text-transform: uppercase; }
 .client-logo img:hover { filter: grayscale(0%) opacity(1); }
 .carousel-button { position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(255, 255, 255, 0.1); border: none; color: var(--white); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; transition: background-color 0.3s ease; z-index: 10; }
 .carousel-button:hover { background-color: rgba(0, 212, 255, 0.5); }
@@ -111,6 +126,18 @@ section { padding: 100px 0; }
 .contact-button.instagram { background-color: transparent; color: var(--accent-pink); border: 2px solid var(--accent-pink); }
 .contact-button.instagram:hover { background-color: var(--accent-pink); color: var(--white); transform: scale(1.05); }
 
+/* NOVO: Estilo para o botão de agendamento */
+.contact-button.schedule {
+    background-color: var(--accent-cyan);
+    color: var(--bg-dark);
+}
+.contact-button.schedule:hover {
+    background-color: var(--white);
+    color: var(--bg-dark);
+    transform: scale(1.05);
+}
+
+
 /* --- Rodapé --- */
 footer { background-color: var(--bg-dark); text-align: center; padding: 2rem 0; border-top: 1px solid rgba(255, 255, 255, 0.1); color: var(--text-secondary); font-size: 0.9rem; }
 
@@ -118,26 +145,18 @@ footer { background-color: var(--bg-dark); text-align: center; padding: 2rem 0; 
 @media (max-width: 992px) { 
     .client-logo { width: calc(100% / 4); } 
 }
-
 @media (max-width: 768px) {
-    /* Ajustes responsivos para telas menores */
-    header .container {
-        height: 90px; /* Reduz a altura do header em telas pequenas */
-    }
-    .logo img {
-        height: 60px; /* Reduz a logo em telas pequenas para não quebrar o layout */
-    }
-    #hero {
-        padding-top: 90px; /* Ajusta o espaçamento para a altura do header de mobile */
-    }
-
+    header .container { height: 90px; }
+    .logo img { height: 80px; }
+    #hero { padding-top: 90px; }
     .nav-links { display: none; }
     .hero-content h1 { font-size: 2.5rem; }
     .contact-links { flex-direction: column; }
-    .client-logo { width: calc(100% / 3); }
+    .client-logo { width: calc(100% / 3); height: auto; }
+    .client-logo img { height: 40px; }
     .carousel-button { display: none; }
 }
-
 @media (max-width: 576px) { 
-    .client-logo { width: calc(100% / 2); } 
+    .client-logo { width: calc(100% / 2); height: auto; } 
+    .client-logo img { height: 30px; }
 }
